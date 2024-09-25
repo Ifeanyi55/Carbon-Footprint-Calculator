@@ -67,24 +67,19 @@ def carbonFootPrintAI(monthly_oil_bill: int,
         return [total_footprint, response4.text]
 
 
-css = """
-.app {
-    border-width: 3px;
-    border-color: forestgreen;
-}
-"""
-# Gradio Interface
+
+# Gradio interface
 app = gr.Interface(
     fn=carbonFootPrintAI,
     inputs=[
-        gr.Number(label="Monthly Gas Bill", elem_classes="app"),
-        gr.Number(label="Monthly Oil Bill", elem_classes="app"),
-        gr.Number(label="Monthly Electricity Bill", elem_classes="app"),
-        gr.Slider(label="Total Yearly Mileage on Car", value = 0, minimum = 0, maximum = 50000, step = 1, elem_classes="app"),
-        gr.Slider(label="Number of Flights Less Than or Equal to 4 Hours", value = 0, minimum = 0, maximum = 100, step = 1, elem_classes="app"),
-        gr.Slider(label="Number of Flights More Than or Equal to 4 Hours", value = 0, minimum = 0, maximum = 100, step = 1, elem_classes="app"),
-        gr.Checkbox(label="Do You Recycle Newspaper?", elem_classes="app"),
-        gr.Checkbox(label="Do You Recycle Aluminium and Tin?", elem_classes="app")
+        gr.Number(label="Monthly Gas Bill"),
+        gr.Number(label="Monthly Oil Bill"),
+        gr.Number(label="Monthly Electricity Bill"),
+        gr.Slider(label="Total Yearly Mileage on Car", value = 0, minimum = 0, maximum = 50000, step = 1),
+        gr.Slider(label="Number of Flights Less Than or Equal to 4 Hours", value = 0, minimum = 0, maximum = 100, step = 1),
+        gr.Slider(label="Number of Flights More Than or Equal to 4 Hours", value = 0, minimum = 0, maximum = 100, step = 1),
+        gr.Checkbox(label="Do You Recycle Newspaper?"),
+        gr.Checkbox(label="Do You Recycle Aluminium and Tin?")
     ],
     outputs=[
         gr.Number(label="Total Carbon Footprint", elem_classes="app"),
@@ -94,4 +89,5 @@ app = gr.Interface(
     title = "&#127757; &#127807; Carbon Footprint Calculator &#127757; &#127807;"
 )
 
+# launch application
 app.launch()
